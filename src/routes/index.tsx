@@ -239,6 +239,14 @@ function ContactButton({
 }) {
   const isPrimary = tone === "primary";
   const isAccent = tone === "accent";
+  const isNativeProtocol = href.startsWith("mailto:") || href.startsWith("tel:");
+
+  const openHref = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!isNativeProtocol) return;
+    // Ensure mailto/tel open the system client even if a parent handler interferes
+    event.preventDefault();
+    window.location.href = href;
+  };
 
   const content = (
     <>
@@ -257,6 +265,7 @@ function ContactButton({
     return (
       <ShinyLink
         href={href}
+        onClick={openHref}
         className="group flex items-center rounded-xl border border-primary bg-primary px-4 py-3.5 text-primary-foreground shadow-[0_2px_8px_oklch(0.55_0.16_255/0.25)] transition-shadow duration-300 hover:shadow-[0_0_20px_oklch(0.55_0.16_255/0.3)] hover:brightness-110"
       >
         {content}
@@ -267,6 +276,7 @@ function ContactButton({
   return (
     <a
       href={href}
+      onClick={openHref}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className={`group flex w-full items-center gap-4 rounded-xl px-4 py-3.5 transition ${
         isAccent
