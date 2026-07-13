@@ -44,7 +44,7 @@ export function ContactForm() {
   };
 
   return (
-    <Reveal delay={120} className="md:col-span-6 lg:col-span-12" data-pdf-exclude>
+    <Reveal delay={120} className="md:col-span-6 lg:col-span-12" data-print-exclude>
       <TiltCard className="p-7 md:p-8" intensity={5}>
         <FormLabel>Get in touch</FormLabel>
         <h3 className="mt-2 text-xl font-semibold tracking-tight text-ink md:text-2xl">Send a message</h3>

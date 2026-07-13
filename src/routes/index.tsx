@@ -1,9 +1,7 @@
-import { useRef, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Phone, Mail, MessageCircle, MapPin, Briefcase, GraduationCap, Car, Download, ArrowUpRight, Loader2 } from "lucide-react";
+import { Phone, Mail, MessageCircle, MapPin, Briefcase, GraduationCap, Car, Laptop, ArrowUpRight, Download } from "lucide-react";
 import { TiltCard } from "@/components/TiltCard";
 import { Reveal } from "@/components/Reveal";
-import { ResumePdfSource } from "@/components/ResumePdfSource";
 import { ContactForm } from "@/components/ContactForm";
 import { ShinyLink } from "@/components/ui/shiny-button";
 
@@ -17,7 +15,9 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: "Senior BDM · Life Sciences · Key Accounts · Cardiff, UK." },
       { property: "og:type", content: "profile" },
       { property: "og:url", content: "/" },
+      { property: "og:image", content: "/og-image.png" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "/og-image.png" },
       { name: "twitter:title", content: "Sam Shahi — Business Development Manager" },
       { name: "twitter:description", content: "Senior BDM · Life Sciences · Key Accounts · Cardiff, UK." },
     ],
@@ -45,6 +45,8 @@ export const Route = createFileRoute("/")({
 const PHONE = "+447442005955";
 const PHONE_DISPLAY = "+44 7442 005955";
 const EMAIL = "samir00524@gmail.com";
+const RESUME_PDF_PATH = "/Sam-Shahi-Resume.pdf";
+const RESUME_PDF_FILENAME = "Sam Shahi - 07442005955 - IBM MSc - 10+ Yrs Exp.pdf";
 
 const competencies = [
   "New Business Development",
@@ -103,38 +105,9 @@ const education = [
   { degree: "BBM International Business Management", school: "India", period: "2014 – 2017" },
 ];
 
-const pdfData = { phone: PHONE, phoneDisplay: PHONE_DISPLAY, email: EMAIL, competencies, education, experience };
-
 function Resume() {
-  const pdfRef = useRef<HTMLDivElement>(null);
-  const [downloading, setDownloading] = useState(false);
-  const [pdfReady, setPdfReady] = useState(false);
-
-  const handleDownloadPdf = async () => {
-    if (downloading) return;
-    setDownloading(true);
-    setPdfReady(true);
-    try {
-      await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
-      const el = pdfRef.current;
-      if (!el) return;
-      const { downloadResumePdf } = await import("@/lib/downloadResumePdf");
-      await downloadResumePdf(el);
-    } finally {
-      setPdfReady(false);
-      setDownloading(false);
-    }
-  };
-
   return (
-    <>
-      {pdfReady && (
-        <div aria-hidden="true" className="pointer-events-none fixed top-0 -left-[9999px] w-[1200px]">
-          <ResumePdfSource ref={pdfRef} data={pdfData} />
-        </div>
-      )}
-
-      <main className="min-h-screen bg-background px-4 py-8 sm:px-6 sm:py-12 lg:px-10 lg:py-16">
+    <main className="min-h-screen bg-background px-4 py-8 sm:px-6 sm:py-12 lg:px-10 lg:py-16">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 sm:gap-5 md:grid-cols-6 lg:grid-cols-12">
 
           <Reveal delay={0} className="md:col-span-6 lg:col-span-7">
@@ -157,7 +130,7 @@ function Resume() {
               <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
                 <span className="inline-flex items-center gap-1.5"><MapPin className="h-4 w-4 text-primary" /> Cardiff, Wales</span>
                 <span className="hidden h-1 w-1 rounded-full bg-border sm:inline-block" />
-                <span>Hybrid · Home-based</span>
+                <span className="inline-flex items-center gap-1.5"><Laptop className="h-4 w-4 text-primary" /> Hybrid</span>
                 <span className="hidden h-1 w-1 rounded-full bg-border sm:inline-block" />
                 <span className="inline-flex items-center gap-1.5"><Car className="h-4 w-4 text-primary" /> Open to UK &amp; Ireland travel</span>
               </div>
@@ -169,9 +142,9 @@ function Resume() {
               <Label>Contact</Label>
               <div className="mt-4 grid gap-3">
                 <ContactButton href={`tel:${PHONE}`} icon={<Phone className="h-5 w-5" />} label="Call" value={PHONE_DISPLAY} tone="primary" />
-                <ContactButton href={`https://wa.me/${PHONE.replace("+", "")}`} icon={<MessageCircle className="h-5 w-5" />} label="WhatsApp" value="Message on WhatsApp" external />
+                <ContactButton href={`https://wa.me/${PHONE.replace("+", "")}`} icon={<MessageCircle className="h-5 w-5" />} label="WhatsApp" value="Message on WhatsApp" external tone="accent" />
                 <ContactButton href={`mailto:${EMAIL}`} icon={<Mail className="h-5 w-5" />} label="Email" value={EMAIL} />
-                <DownloadPdfButton onClick={handleDownloadPdf} loading={downloading} />
+                <DownloadPdfButton href={RESUME_PDF_PATH} filename={RESUME_PDF_FILENAME} />
               </div>
             </TiltCard>
           </Reveal>
@@ -217,15 +190,15 @@ function Resume() {
               className={i === 2 ? "md:col-span-6 lg:col-span-12" : "md:col-span-6 lg:col-span-6"}
             >
               <TiltCard className="h-full p-7 md:p-8" intensity={6}>
-                <div className="flex items-start gap-3">
-                  <div className="shrink-0 rounded-xl border border-border bg-secondary p-2.5 text-primary">
-                    <Briefcase className="h-4 w-4" />
-                  </div>
+                <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0 flex-1">
                     <Label>{job.period}</Label>
                     <h3 className="mt-2 text-xl font-semibold tracking-tight text-ink md:text-2xl">{job.role}</h3>
                     <div className="mt-1 text-[15px] font-medium text-primary">{job.company}</div>
                     <div className="mt-1 max-w-xl text-sm text-muted-foreground">{job.sub}</div>
+                  </div>
+                  <div className="shrink-0 rounded-xl border border-border bg-secondary p-2.5 text-primary">
+                    <Briefcase className="h-4 w-4" />
                   </div>
                 </div>
                 <ul className="mt-6 space-y-2.5 text-[14px] leading-relaxed text-foreground/80">
@@ -242,7 +215,6 @@ function Resume() {
           <ContactForm />
         </div>
       </main>
-    </>
   );
 }
 
@@ -263,20 +235,21 @@ function ContactButton({
   label: string;
   value: string;
   external?: boolean;
-  tone?: "primary";
+  tone?: "primary" | "accent";
 }) {
   const isPrimary = tone === "primary";
+  const isAccent = tone === "accent";
 
   const content = (
     <>
-      <div className={`rounded-lg p-2.5 ${isPrimary ? "bg-white/15 text-primary-foreground" : "bg-secondary text-primary"}`}>
+      <div className={`rounded-lg p-2.5 ${isPrimary ? "bg-white/15 text-primary-foreground" : isAccent ? "bg-primary/10 text-primary" : "bg-secondary text-primary"}`}>
         {icon}
       </div>
       <div className="min-w-0 flex-1">
-        <div className={`text-[11px] font-semibold uppercase tracking-wider ${isPrimary ? "text-primary-foreground/80" : "text-muted-foreground"}`}>{label}</div>
+        <div className={`text-[11px] font-semibold uppercase tracking-wider ${isPrimary ? "text-primary-foreground/80" : isAccent ? "text-primary/80" : "text-muted-foreground"}`}>{label}</div>
         <div className={`mt-0.5 truncate text-sm font-medium ${isPrimary ? "text-primary-foreground" : "text-ink"}`}>{value}</div>
       </div>
-      <ArrowUpRight className={`h-4 w-4 shrink-0 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${isPrimary ? "text-primary-foreground/90" : "text-primary opacity-0 group-hover:opacity-100"}`} />
+      <ArrowUpRight className={`h-4 w-4 shrink-0 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${isPrimary ? "text-primary-foreground/90" : isAccent ? "text-primary" : "text-primary opacity-0 group-hover:opacity-100"}`} />
     </>
   );
 
@@ -295,31 +268,32 @@ function ContactButton({
     <a
       href={href}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className="group flex items-center gap-4 rounded-xl border border-border bg-surface px-4 py-3.5 transition hover:border-primary/40 hover:bg-secondary"
+      className={`group flex w-full items-center gap-4 rounded-xl px-4 py-3.5 transition ${
+        isAccent
+          ? "border border-primary/25 bg-accent text-left hover:border-primary/40 hover:bg-accent/80"
+          : "border border-border bg-surface hover:border-primary/40 hover:bg-secondary"
+      }`}
     >
       {content}
     </a>
   );
 }
 
-function DownloadPdfButton({ onClick, loading }: { onClick: () => void; loading: boolean }) {
+function DownloadPdfButton({ href, filename }: { href: string; filename: string }) {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      disabled={loading}
-      className="group flex w-full items-center gap-4 rounded-xl border border-border bg-surface px-4 py-3.5 text-left transition hover:border-primary/40 hover:bg-secondary disabled:opacity-60"
+    <a
+      href={href}
+      download={filename}
+      className="group flex w-full items-center gap-4 rounded-xl border border-border bg-surface px-4 py-3.5 text-left transition hover:border-primary/40 hover:bg-secondary"
     >
       <div className="rounded-lg bg-secondary p-2.5 text-primary">
-        {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <Download className="h-5 w-5" />}
+        <Download className="h-5 w-5" />
       </div>
       <div className="min-w-0 flex-1">
-        <div className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Download</div>
-        <div className="mt-0.5 text-sm font-medium text-ink">{loading ? "Generating PDF…" : "Save resume as PDF"}</div>
+        <div className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Resume</div>
+        <div className="mt-0.5 text-sm font-medium text-ink">Download PDF</div>
       </div>
-      {!loading && (
-        <ArrowUpRight className="h-4 w-4 shrink-0 text-primary opacity-0 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
-      )}
-    </button>
+      <ArrowUpRight className="h-4 w-4 shrink-0 text-primary opacity-0 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
+    </a>
   );
 }
