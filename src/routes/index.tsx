@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Phone, Mail, MessageCircle, MapPin, Briefcase, GraduationCap, Sparkles, ArrowUpRight } from "lucide-react";
+import { Phone, Mail, MessageCircle, MapPin, Briefcase, GraduationCap, Award, TrendingUp, Building2, ArrowUpRight } from "lucide-react";
 import { TiltCard } from "@/components/TiltCard";
 import { Reveal } from "@/components/Reveal";
 
@@ -7,11 +7,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Sam Shahi — Business Development Manager | Life Sciences" },
-      {
-        name: "description",
-        content:
-          "Sam Shahi — Senior Business Development Manager based in Cardiff. 10+ years growing life-sciences, pharma and analytical-testing accounts across the UK & Ireland.",
-      },
+      { name: "description", content: "Sam Shahi — Senior Business Development Manager based in Cardiff. 10+ years growing life-sciences, pharma and analytical-testing accounts across the UK & Ireland." },
       { name: "keywords", content: "Sam Shahi, Business Development Manager, Life Sciences BDM, Cardiff, UK, Ireland, Pharmaceutical Sales, Key Account Manager" },
       { property: "og:title", content: "Sam Shahi — Business Development Manager" },
       { property: "og:description", content: "Senior BDM · Life Sciences · Key Accounts · Cardiff, UK." },
@@ -103,283 +99,179 @@ const education = [
 ];
 
 const stats = [
-  { k: "10+", v: "Years commercial experience" },
-  { k: "60%+", v: "Proposal-to-close win rate" },
-  { k: "34%", v: "Export revenue growth" },
-  { k: "£920K+", v: "Annual influenced pipeline" },
+  { k: "10+", v: "Years experience", icon: Briefcase },
+  { k: "60%+", v: "Win rate", icon: TrendingUp },
+  { k: "34%", v: "Export growth", icon: Award },
+  { k: "£920K+", v: "Annual pipeline", icon: Building2 },
 ];
 
 function Resume() {
   return (
-    <main className="grain relative min-h-screen overflow-hidden">
-      {/* ambient glow */}
-      <div aria-hidden className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,oklch(0.82_0.13_82/0.18),transparent)] blur-3xl" />
+    <main className="min-h-screen bg-background px-4 py-8 sm:px-6 sm:py-12 lg:px-10 lg:py-16">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 sm:gap-5 md:grid-cols-6 lg:grid-cols-12">
 
-      {/* NAV */}
-      <header className="sticky top-0 z-40 border-b border-border/40 bg-background/70 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-          <a href="#top" className="font-display text-lg font-semibold tracking-tight">
-            Sam<span className="text-gold-gradient"> Shahi</span>
-          </a>
-          <nav className="hidden gap-8 text-sm text-muted-foreground md:flex">
-            <a href="#about" className="transition hover:text-foreground">About</a>
-            <a href="#experience" className="transition hover:text-foreground">Experience</a>
-            <a href="#skills" className="transition hover:text-foreground">Skills</a>
-            <a href="#contact" className="transition hover:text-foreground">Contact</a>
-          </nav>
-          <a
-            href={`tel:${PHONE}`}
-            className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-xs font-medium text-primary transition hover:bg-primary/20"
-          >
-            <Phone className="h-3.5 w-3.5" /> Call
-          </a>
-        </div>
-      </header>
-
-      {/* HERO */}
-      <section id="top" className="relative mx-auto max-w-6xl px-5 pt-16 pb-24 md:pt-28 md:pb-32">
-        <Reveal className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/60 bg-surface/50 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
-          <Sparkles className="h-3.5 w-3.5 text-primary" />
-          Open to BDM roles · UK &amp; Ireland
-        </Reveal>
-
-        <Reveal as="header" delay={80}>
-          <h1 className="font-display text-5xl leading-[0.95] tracking-tight md:text-7xl lg:text-8xl">
-            Sam Shahi.
-            <br />
-            <span className="text-gold-gradient">Business growth,</span>
-            <br />
-            engineered.
-          </h1>
-        </Reveal>
-
-        <Reveal delay={200}>
-          <p className="mt-8 max-w-2xl text-lg text-muted-foreground md:text-xl">
-            Senior Business Development Manager with 10+ years turning pipeline into profitable,
-            service-led accounts across life-sciences, pharmaceutical and analytical-testing markets.
-          </p>
-        </Reveal>
-
-        <Reveal delay={320}>
-          <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-            <span className="inline-flex items-center gap-1.5"><MapPin className="h-4 w-4 text-primary" /> Cardiff, Wales</span>
-            <span className="h-1 w-1 rounded-full bg-border" />
-            <span>Hybrid · Home-based · UK &amp; Ireland travel</span>
-          </div>
-        </Reveal>
-
-        <Reveal delay={420}>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <a
-              href={`tel:${PHONE}`}
-              className="group inline-flex items-center gap-2.5 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[0_10px_40px_-10px_oklch(0.82_0.13_82/0.6)] transition hover:scale-[1.03] hover:shadow-[0_10px_40px_-5px_oklch(0.82_0.13_82/0.8)]"
-            >
-              <Phone className="h-4 w-4" /> {PHONE_DISPLAY}
-            </a>
-            <a
-              href={`https://wa.me/${PHONE.replace("+", "")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2.5 rounded-full border border-border bg-surface/60 px-6 py-3 text-sm font-semibold text-foreground backdrop-blur transition hover:border-primary/50 hover:bg-surface"
-            >
-              <MessageCircle className="h-4 w-4 text-primary" /> WhatsApp
-            </a>
-            <a
-              href={`mailto:${EMAIL}`}
-              className="group inline-flex items-center gap-2.5 rounded-full border border-border bg-surface/60 px-6 py-3 text-sm font-semibold text-foreground backdrop-blur transition hover:border-primary/50 hover:bg-surface"
-            >
-              <Mail className="h-4 w-4 text-primary" /> Email
-            </a>
-          </div>
-        </Reveal>
-
-        {/* stats */}
-        <Reveal delay={600}>
-          <div className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border/60 bg-border/60 md:grid-cols-4">
-            {stats.map((s) => (
-              <div key={s.k} className="bg-surface/70 p-6 backdrop-blur">
-                <div className="font-display text-3xl text-gold-gradient md:text-4xl">{s.k}</div>
-                <div className="mt-1 text-xs text-muted-foreground md:text-sm">{s.v}</div>
-              </div>
-            ))}
-          </div>
-        </Reveal>
-      </section>
-
-      {/* ABOUT */}
-      <section id="about" className="mx-auto max-w-6xl px-5 py-20">
-        <Reveal>
-          <SectionLabel>01 — Profile</SectionLabel>
-          <h2 className="mt-4 max-w-3xl font-display text-3xl leading-tight md:text-5xl">
-            Analysing organisations. <span className="text-gold-gradient">Designing offers.</span> Converting pipeline.
-          </h2>
-        </Reveal>
-        <Reveal delay={160}>
-          <p className="mt-8 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            Progressed from SDR to Senior BDM selling digital solutions into life-sciences and regulated
-            industries, with earlier B2B growth for a GMP-certified phytochemical and herbal-extract
-            manufacturer. Skilled at analysing client organisations, designing tailored commercial offers,
-            managing CDA/MSA-style contracting, and converting pipeline into profitable, service-led accounts.
-          </p>
-        </Reveal>
-      </section>
-
-      {/* EXPERIENCE — sticky stack on mobile */}
-      <section id="experience" className="mx-auto max-w-6xl px-5 py-20">
-        <Reveal>
-          <SectionLabel>02 — Experience</SectionLabel>
-          <h2 className="mt-4 font-display text-3xl md:text-5xl">A decade of commercial wins.</h2>
-        </Reveal>
-
-        <div className="mt-14 flex flex-col gap-6 md:gap-10">
-          {experience.map((job, i) => (
-            <div key={job.company} className="stack-card md:static" style={{ top: `${5 + i * 1.5}rem` }}>
-              <Reveal delay={i * 80}>
-                <TiltCard className="p-7 md:p-10">
-                  <div className="flex flex-wrap items-start justify-between gap-4">
-                    <div className="min-w-0">
-                      <div className="text-xs uppercase tracking-widest text-primary">{job.period}</div>
-                      <h3 className="mt-2 font-display text-2xl leading-tight md:text-3xl">{job.role}</h3>
-                      <div className="mt-1 text-lg text-foreground/90">{job.company}</div>
-                      <div className="mt-1 max-w-xl text-sm text-muted-foreground">{job.sub}</div>
-                    </div>
-                    <div className="shrink-0 rounded-full border border-primary/30 bg-primary/10 p-3 text-primary">
-                      <Briefcase className="h-5 w-5" />
-                    </div>
-                  </div>
-                  <div className="mt-6 h-px shimmer-line" />
-                  <ul className="mt-6 space-y-3 text-sm leading-relaxed text-muted-foreground md:text-base">
-                    {job.points.map((p) => (
-                      <li key={p} className="relative pl-5 before:absolute before:left-0 before:top-2.5 before:h-1.5 before:w-1.5 before:rounded-full before:bg-primary">
-                        {p}
-                      </li>
-                    ))}
-                  </ul>
-                </TiltCard>
-              </Reveal>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* SKILLS */}
-      <section id="skills" className="mx-auto max-w-6xl px-5 py-20">
-        <Reveal>
-          <SectionLabel>03 — Core Competencies</SectionLabel>
-          <h2 className="mt-4 font-display text-3xl md:text-5xl">Where I add value.</h2>
-        </Reveal>
-        <div className="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {competencies.map((c, i) => (
-            <Reveal key={c} delay={i * 40}>
-              <TiltCard className="p-5" intensity={5}>
-                <div className="flex items-center justify-between gap-3">
-                  <span className="text-sm font-medium md:text-base">{c}</span>
-                  <ArrowUpRight className="h-4 w-4 text-primary opacity-70" />
-                </div>
-              </TiltCard>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* EDUCATION */}
-      <section className="mx-auto max-w-6xl px-5 py-20">
-        <Reveal>
-          <SectionLabel>04 — Education</SectionLabel>
-          <h2 className="mt-4 font-display text-3xl md:text-5xl">Foundations.</h2>
-        </Reveal>
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {education.map((e, i) => (
-            <Reveal key={e.degree} delay={i * 100}>
-              <TiltCard className="p-7">
-                <div className="flex items-start gap-4">
-                  <div className="shrink-0 rounded-full border border-primary/30 bg-primary/10 p-3 text-primary">
-                    <GraduationCap className="h-5 w-5" />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-xs uppercase tracking-widest text-primary">{e.period}</div>
-                    <h3 className="mt-1.5 font-display text-xl leading-snug">{e.degree}</h3>
-                    <div className="mt-1 text-sm text-muted-foreground">{e.school}</div>
-                  </div>
-                </div>
-              </TiltCard>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* CONTACT */}
-      <section id="contact" className="mx-auto max-w-6xl px-5 py-24">
-        <Reveal>
-          <TiltCard className="overflow-hidden p-10 md:p-16" intensity={4}>
-            <SectionLabel>05 — Let's talk</SectionLabel>
-            <h2 className="mt-4 max-w-2xl font-display text-4xl leading-tight md:text-6xl">
-              Ready to grow your <span className="text-gold-gradient">next account.</span>
-            </h2>
-            <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              Available for Business Development roles across the UK &amp; Ireland — hybrid or home-based.
+        <Reveal delay={0} className="md:col-span-6 lg:col-span-7">
+          <TiltCard className="h-full p-8 md:p-10">
+            <Label>Profile</Label>
+            <h1 className="mt-3 text-4xl font-semibold tracking-tight text-ink md:text-5xl lg:text-6xl">
+              Sam Shahi
+            </h1>
+            <p className="mt-3 text-lg font-medium text-primary md:text-xl">
+              Senior Business Development Manager
             </p>
-            <div className="mt-10 grid gap-3 sm:grid-cols-3">
-              <ContactButton href={`tel:${PHONE}`} icon={<Phone className="h-5 w-5" />} label="Call" value={PHONE_DISPLAY} />
-              <ContactButton
-                href={`https://wa.me/${PHONE.replace("+", "")}`}
-                icon={<MessageCircle className="h-5 w-5" />}
-                label="WhatsApp"
-                value="Message me"
-                external
-              />
+            <p className="mt-1 text-sm text-muted-foreground">
+              Life Sciences · Key Accounts · UK &amp; Ireland
+            </p>
+            <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-foreground/80">
+              Results-driven BDM progressing from SDR to Senior BDM, with a track record selling digital
+              solutions into life-sciences and regulated industries, and earlier B2B growth for a
+              GMP-certified phytochemical and herbal-extract manufacturer.
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
+              <span className="inline-flex items-center gap-1.5"><MapPin className="h-4 w-4 text-primary" /> Cardiff, Wales</span>
+              <span className="hidden h-1 w-1 rounded-full bg-border sm:inline-block" />
+              <span>Hybrid · Home-based</span>
+              <span className="hidden h-1 w-1 rounded-full bg-border sm:inline-block" />
+              <span>Open to UK &amp; Ireland travel</span>
+            </div>
+          </TiltCard>
+        </Reveal>
+
+        <Reveal delay={80} className="md:col-span-6 lg:col-span-5">
+          <TiltCard className="h-full p-6 md:p-8" intensity={5}>
+            <Label>Contact</Label>
+            <div className="mt-4 grid gap-3">
+              <ContactButton href={`tel:${PHONE}`} icon={<Phone className="h-5 w-5" />} label="Call" value={PHONE_DISPLAY} tone="primary" />
+              <ContactButton href={`https://wa.me/${PHONE.replace("+", "")}`} icon={<MessageCircle className="h-5 w-5" />} label="WhatsApp" value="Message on WhatsApp" external />
               <ContactButton href={`mailto:${EMAIL}`} icon={<Mail className="h-5 w-5" />} label="Email" value={EMAIL} />
             </div>
           </TiltCard>
         </Reveal>
-      </section>
 
-      <footer className="border-t border-border/40 py-10">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-5 text-xs text-muted-foreground sm:flex-row">
-          <div>© {new Date().getFullYear()} Sam Shahi · Cardiff, Wales</div>
-          <div>Business Development Manager · Life Sciences</div>
-        </div>
-      </footer>
+        {stats.map((s, i) => (
+          <Reveal key={s.k} delay={140 + i * 60} className="md:col-span-3 lg:col-span-3">
+            <TiltCard className="h-full p-6" intensity={5}>
+              <s.icon className="h-5 w-5 text-primary" />
+              <div className="mt-4 text-3xl font-semibold tracking-tight text-ink md:text-4xl">{s.k}</div>
+              <div className="mt-1 text-sm text-muted-foreground">{s.v}</div>
+            </TiltCard>
+          </Reveal>
+        ))}
+
+        {experience.map((job, i) => (
+          <Reveal
+            key={job.company}
+            delay={300 + i * 80}
+            className={i === 2 ? "md:col-span-6 lg:col-span-12" : "md:col-span-6 lg:col-span-6"}
+          >
+            <TiltCard className="h-full p-7 md:p-8" intensity={6}>
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <Label>{job.period}</Label>
+                  <h3 className="mt-2 text-xl font-semibold tracking-tight text-ink md:text-2xl">{job.role}</h3>
+                  <div className="mt-1 text-[15px] font-medium text-primary">{job.company}</div>
+                  <div className="mt-1 max-w-xl text-sm text-muted-foreground">{job.sub}</div>
+                </div>
+                <div className="shrink-0 rounded-xl border border-border bg-secondary p-2.5 text-primary">
+                  <Briefcase className="h-4 w-4" />
+                </div>
+              </div>
+              <ul className="mt-6 space-y-2.5 text-[14px] leading-relaxed text-foreground/80">
+                {job.points.map((p) => (
+                  <li key={p} className="relative pl-5 before:absolute before:left-0 before:top-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-primary/70">
+                    {p}
+                  </li>
+                ))}
+              </ul>
+            </TiltCard>
+          </Reveal>
+        ))}
+
+        <Reveal delay={600} className="md:col-span-6 lg:col-span-7">
+          <TiltCard className="h-full p-7 md:p-8" intensity={5}>
+            <Label>Core Competencies</Label>
+            <h3 className="mt-2 text-xl font-semibold tracking-tight text-ink md:text-2xl">Where I add value</h3>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {competencies.map((c) => (
+                <span key={c} className="rounded-full border border-border bg-secondary/60 px-3.5 py-1.5 text-[13px] font-medium text-foreground/80 transition hover:border-primary/40 hover:bg-accent hover:text-accent-foreground">
+                  {c}
+                </span>
+              ))}
+            </div>
+          </TiltCard>
+        </Reveal>
+
+        <Reveal delay={680} className="md:col-span-6 lg:col-span-5">
+          <TiltCard className="h-full p-7 md:p-8" intensity={5}>
+            <Label>Education</Label>
+            <div className="mt-5 space-y-5">
+              {education.map((e) => (
+                <div key={e.degree} className="flex items-start gap-3">
+                  <div className="shrink-0 rounded-xl border border-border bg-secondary p-2.5 text-primary">
+                    <GraduationCap className="h-4 w-4" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-xs font-medium uppercase tracking-wider text-muted-foreground">{e.period}</div>
+                    <div className="mt-0.5 text-[15px] font-semibold text-ink">{e.degree}</div>
+                    <div className="text-sm text-muted-foreground">{e.school}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </TiltCard>
+        </Reveal>
+
+        <Reveal delay={760} className="md:col-span-6 lg:col-span-12">
+          <TiltCard className="p-6" intensity={3}>
+            <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
+              <div>© {new Date().getFullYear()} Sam Shahi · Cardiff, Wales</div>
+              <div>Business Development Manager · Life Sciences</div>
+            </div>
+          </TiltCard>
+        </Reveal>
+      </div>
     </main>
   );
 }
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
+function Label({ children }: { children: React.ReactNode }) {
   return (
-    <div className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-primary">
-      <span className="h-px w-8 bg-primary/60" />
+    <div className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
+      <span className="h-1.5 w-1.5 rounded-full bg-primary" />
       {children}
     </div>
   );
 }
 
 function ContactButton({
-  href,
-  icon,
-  label,
-  value,
-  external,
+  href, icon, label, value, external, tone,
 }: {
   href: string;
   icon: React.ReactNode;
   label: string;
   value: string;
   external?: boolean;
+  tone?: "primary";
 }) {
+  const isPrimary = tone === "primary";
   return (
     <a
       href={href}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className="group flex items-center gap-4 rounded-2xl border border-border bg-surface/60 p-5 backdrop-blur transition hover:-translate-y-0.5 hover:border-primary/50 hover:bg-surface"
+      className={`group flex items-center gap-4 rounded-xl border px-4 py-3.5 transition ${
+        isPrimary
+          ? "border-primary bg-primary text-primary-foreground hover:brightness-110"
+          : "border-border bg-surface hover:border-primary/40 hover:bg-secondary"
+      }`}
     >
-      <div className="rounded-full border border-primary/30 bg-primary/10 p-3 text-primary transition group-hover:scale-110">
+      <div className={`rounded-lg p-2.5 ${isPrimary ? "bg-white/15 text-primary-foreground" : "bg-secondary text-primary"}`}>
         {icon}
       </div>
-      <div className="min-w-0">
-        <div className="text-xs uppercase tracking-widest text-muted-foreground">{label}</div>
-        <div className="mt-0.5 truncate text-sm font-medium text-foreground">{value}</div>
+      <div className="min-w-0 flex-1">
+        <div className={`text-[11px] font-semibold uppercase tracking-wider ${isPrimary ? "text-primary-foreground/80" : "text-muted-foreground"}`}>{label}</div>
+        <div className={`mt-0.5 truncate text-sm font-medium ${isPrimary ? "text-primary-foreground" : "text-ink"}`}>{value}</div>
       </div>
-      <ArrowUpRight className="ml-auto h-4 w-4 shrink-0 text-primary opacity-0 transition group-hover:opacity-100" />
+      <ArrowUpRight className={`h-4 w-4 shrink-0 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${isPrimary ? "text-primary-foreground/90" : "text-primary opacity-0 group-hover:opacity-100"}`} />
     </a>
   );
 }

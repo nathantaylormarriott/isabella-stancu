@@ -33,15 +33,16 @@ export function TiltCard({ children, className, intensity = 8 }: TiltCardProps) 
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
       className={cn(
-        "tilt-card group relative rounded-2xl border border-border/60 bg-card/70 p-6 backdrop-blur-xl",
-        "shadow-[0_20px_60px_-30px_rgba(0,0,0,0.7)]",
+        "tilt-card group relative overflow-hidden rounded-2xl border border-border bg-card p-6",
+        "shadow-[0_1px_2px_rgba(16,24,40,0.04),0_8px_24px_-12px_rgba(16,24,40,0.08)]",
+        "hover:border-primary/30 hover:shadow-[0_2px_4px_rgba(16,24,40,0.04),0_20px_40px_-16px_rgba(59,90,220,0.18)]",
         "before:pointer-events-none before:absolute before:inset-0 before:rounded-2xl",
-        "before:bg-[radial-gradient(400px_circle_at_var(--mx,50%)_var(--my,50%),oklch(0.82_0.13_82/0.14),transparent_60%)]",
-        "before:opacity-0 before:transition-opacity before:duration-500 group-hover:before:opacity-100 hover:before:opacity-100",
+        "before:bg-[radial-gradient(500px_circle_at_var(--mx,50%)_var(--my,50%),oklch(0.55_0.16_255/0.08),transparent_60%)]",
+        "before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100",
         className,
       )}
     >
-      <div className="tilt-inner relative">{children}</div>
+      <div className="relative">{children}</div>
     </div>
   );
 }
