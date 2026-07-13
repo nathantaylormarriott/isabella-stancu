@@ -7,7 +7,7 @@ interface TiltCardProps {
   intensity?: number;
 }
 
-export function TiltCard({ children, className, intensity = 8 }: TiltCardProps) {
+export function TiltCard({ children, className, intensity = 1 }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   const handleMove = (e: MouseEvent<HTMLDivElement>) => {

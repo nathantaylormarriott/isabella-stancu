@@ -138,7 +138,7 @@ function Resume() {
           </Reveal>
 
           <Reveal delay={80} className="md:col-span-6 lg:col-span-5">
-            <TiltCard className="h-full p-6 md:p-8" intensity={5}>
+            <TiltCard className="h-full p-6 md:p-8" intensity={1}>
               <Label>Contact</Label>
               <div className="mt-4 grid gap-3">
                 <ContactButton href={`tel:${PHONE}`} icon={<Phone className="h-5 w-5" />} label="Call" value={PHONE_DISPLAY} tone="primary" />
@@ -150,7 +150,7 @@ function Resume() {
           </Reveal>
 
           <Reveal delay={140} className="md:col-span-6 lg:col-span-12">
-            <TiltCard className="h-full p-7 md:p-8" intensity={5}>
+            <TiltCard className="h-full p-7 md:p-8" intensity={1}>
               <Label>Core Competencies</Label>
               <h3 className="mt-2 text-xl font-semibold tracking-tight text-ink md:text-2xl">Where I bring value</h3>
               <div className="mt-6 flex flex-wrap gap-2">
@@ -164,7 +164,7 @@ function Resume() {
           </Reveal>
 
           <Reveal delay={200} className="md:col-span-6 lg:col-span-12">
-            <TiltCard className="h-full p-7 md:p-8" intensity={5}>
+            <TiltCard className="h-full p-7 md:p-8" intensity={1}>
               <Label>Education</Label>
               <div className="mt-4 grid gap-5 md:grid-cols-2">
                 {education.map((e) => (
@@ -189,7 +189,7 @@ function Resume() {
               delay={260 + i * 80}
               className={i === 2 ? "md:col-span-6 lg:col-span-12" : "md:col-span-6 lg:col-span-6"}
             >
-              <TiltCard className="h-full p-7 md:p-8" intensity={6}>
+              <TiltCard className="h-full p-7 md:p-8" intensity={1}>
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0 flex-1">
                     <Label>{job.period}</Label>
