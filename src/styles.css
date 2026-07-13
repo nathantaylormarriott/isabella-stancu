@@ -80,9 +80,41 @@
   h1, h2, h3, h4 { letter-spacing: -0.02em; }
 }
 
-@keyframes rise {
-  0% { opacity: 0; transform: translateY(16px); }
-  100% { opacity: 1; transform: translateY(0); }
+@keyframes blur-fade-in {
+  0% {
+    opacity: 0;
+    filter: blur(14px);
+    transform: translateY(22px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  filter: blur(14px);
+  transform: translateY(22px);
+  will-change: opacity, filter, transform;
+}
+
+.reveal.is-visible {
+  animation: blur-fade-in 1.15s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    will-change: auto;
+  }
+
+  .reveal.is-visible {
+    animation: none;
+  }
 }
 
 /* 3D perspective tilt card */
