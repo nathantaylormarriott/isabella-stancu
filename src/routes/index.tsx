@@ -4,6 +4,7 @@ import { TiltCard } from "@/components/TiltCard";
 import { Reveal } from "@/components/Reveal";
 import { ContactForm } from "@/components/ContactForm";
 import { ShinyLink } from "@/components/ui/shiny-button";
+import { EMAIL, PHONE, PHONE_DISPLAY, PROFILE, RESUME_PDF_FILENAME, RESUME_PDF_PATH } from "@/lib/profile";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -28,10 +29,10 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Person",
-          name: "Isabella Stancu",
+          name: PROFILE.name,
           jobTitle: "Administration Professional",
-          telephone: "+44 7501 119985",
-          email: "isaviatata@gmail.com",
+          telephone: PHONE_DISPLAY,
+          email: EMAIL,
           address: { "@type": "PostalAddress", addressLocality: "London", addressCountry: "UK" },
           alumniOf: ["Theodor Costescu Economical National College", "City Lit"],
           knowsAbout: ["Administration", "Customer Service", "Microsoft Office", "Business Operations"],
@@ -41,12 +42,6 @@ export const Route = createFileRoute("/")({
   }),
   component: Resume,
 });
-
-const PHONE = "+447501119985";
-const PHONE_DISPLAY = "+44 7501 119985";
-const EMAIL = "isaviatata@gmail.com";
-const RESUME_PDF_PATH = "/Isabella-Stancu-CV.pdf";
-const RESUME_PDF_FILENAME = "CV_ISABELLA_STANCU.pdf";
 
 const skills = [
   "Customer Service & Client Interaction",
@@ -109,23 +104,19 @@ function Resume() {
             <TiltCard className="h-full p-8 md:p-10">
               <Label>Profile</Label>
               <h1 className="mt-3 text-4xl font-semibold tracking-tight text-ink md:text-5xl lg:text-6xl">
-                Isabella Stancu
+                {PROFILE.name}
               </h1>
               <p className="mt-3 text-lg font-medium text-primary md:text-xl">
-                Administration &amp; Business Operations
+                {PROFILE.title}
               </p>
               <p className="mt-1 text-sm text-muted-foreground">
-                Customer Service · Microsoft Office · London, UK
+                {PROFILE.tagline}
               </p>
               <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-foreground/80">
-                Motivated and reliable individual with experience in fast-paced customer service
-                environments. Strong communication, organisation, and problem-solving skills developed
-                through hands-on work in a busy retail setting. Now seeking an admin role to build
-                formal office-based skills, gain professional experience in administration, and develop
-                a long-term career in business operations.
+                {PROFILE.summary}
               </p>
               <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
-                <span className="inline-flex items-center gap-1.5"><MapPin className="h-4 w-4 text-primary" /> London, UK</span>
+                <span className="inline-flex items-center gap-1.5"><MapPin className="h-4 w-4 text-primary" /> {PROFILE.location}</span>
                 <span className="hidden h-1 w-1 rounded-full bg-border sm:inline-block" />
                 <span className="inline-flex items-center gap-1.5"><Laptop className="h-4 w-4 text-primary" /> Office-based roles</span>
                 <span className="hidden h-1 w-1 rounded-full bg-border sm:inline-block" />
@@ -186,6 +177,7 @@ function Resume() {
               key={job.company}
               delay={260 + i * 80}
               className="md:col-span-6 lg:col-span-12"
+              {...(i === 0 ? { id: "experience" } : {})}
             >
               <TiltCard className="h-full p-7 md:p-8" intensity={1}>
                 <div className="flex items-start justify-between gap-3">
