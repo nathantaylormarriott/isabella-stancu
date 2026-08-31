@@ -295,7 +295,7 @@ function ContactButton({
       <ShinyLink
         href={href}
         onClick={openHref}
-        className="group flex items-center rounded-xl border border-primary bg-primary px-4 py-3.5 text-primary-foreground shadow-[0_2px_8px_oklch(0.55_0.16_255/0.25)] transition-shadow duration-300 hover:shadow-[0_0_20px_oklch(0.55_0.16_255/0.3)] hover:brightness-110"
+        className="group flex items-center rounded-xl border border-primary bg-primary px-4 py-3.5 text-primary-foreground shadow-[0_2px_8px_oklch(0.64_0.13_48/0.25)] transition-shadow duration-300 hover:shadow-[0_0_20px_oklch(0.64_0.13_48/0.3)] hover:brightness-110"
       >
         {content}
       </ShinyLink>

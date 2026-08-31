@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Isabella Stancu — Admin & Business Operations | London, UK" },
       { name: "description", content: "Isabella Stancu — Motivated admin professional based in London. Experienced in customer service, Microsoft Office, and business administration." },
       { name: "author", content: "Isabella Stancu" },
-      { name: "theme-color", content: "#4575E6" },
+      { name: "theme-color", content: "#C96B4A" },
       { property: "og:site_name", content: "Isabella Stancu" },
       { property: "og:type", content: "website" },
       { property: "og:image", content: "/og-image.png" },
