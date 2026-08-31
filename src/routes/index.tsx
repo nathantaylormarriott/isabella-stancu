@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Phone, Mail, MessageCircle, MapPin, Briefcase, GraduationCap, Plane, Laptop, ArrowUpRight, Download } from "lucide-react";
+import { Phone, Mail, MessageCircle, MapPin, Briefcase, GraduationCap, BookOpen, Laptop, ArrowUpRight, Download, Languages } from "lucide-react";
 import { TiltCard } from "@/components/TiltCard";
 import { Reveal } from "@/components/Reveal";
 import { ContactForm } from "@/components/ContactForm";
@@ -8,18 +8,18 @@ import { ShinyLink } from "@/components/ui/shiny-button";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Sam Shahi — Business Development Manager | Life Sciences" },
-      { name: "description", content: "Sam Shahi — Senior Business Development Manager based in Cardiff. 10+ years growing life-sciences, pharma and analytical-testing accounts across the UK & Ireland." },
-      { name: "keywords", content: "Sam Shahi, Business Development Manager, Life Sciences BDM, Cardiff, UK, Ireland, Pharmaceutical Sales, Key Account Manager" },
-      { property: "og:title", content: "Sam Shahi — Business Development Manager" },
-      { property: "og:description", content: "Senior BDM · Life Sciences · Key Accounts · Cardiff, UK." },
+      { title: "Isabella Stancu — Admin & Business Operations | London, UK" },
+      { name: "description", content: "Isabella Stancu — Motivated admin professional based in London. Experienced in customer service, Microsoft Office, and business administration. Seeking office-based admin roles." },
+      { name: "keywords", content: "Isabella Stancu, Administration, Business Operations, London, UK, Customer Service, Microsoft Office, City Lit" },
+      { property: "og:title", content: "Isabella Stancu — Admin & Business Operations" },
+      { property: "og:description", content: "Admin professional · Customer Service · Microsoft Office · London, UK." },
       { property: "og:type", content: "profile" },
       { property: "og:url", content: "/" },
       { property: "og:image", content: "/og-image.png" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: "/og-image.png" },
-      { name: "twitter:title", content: "Sam Shahi — Business Development Manager" },
-      { name: "twitter:description", content: "Senior BDM · Life Sciences · Key Accounts · Cardiff, UK." },
+      { name: "twitter:title", content: "Isabella Stancu — Admin & Business Operations" },
+      { name: "twitter:description", content: "Admin professional · Customer Service · Microsoft Office · London, UK." },
     ],
     links: [{ rel: "canonical", href: "/" }],
     scripts: [
@@ -28,13 +28,13 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Person",
-          name: "Sam Shahi",
-          jobTitle: "Senior Business Development Manager",
-          telephone: "+44 7442 005955",
-          email: "samir00524@gmail.com",
-          address: { "@type": "PostalAddress", addressLocality: "Cardiff", addressRegion: "Wales", addressCountry: "UK" },
-          alumniOf: ["De Montfort University"],
-          knowsAbout: ["Life Sciences", "Pharmaceutical Sales", "Key Account Management", "B2B Business Development"],
+          name: "Isabella Stancu",
+          jobTitle: "Administration Professional",
+          telephone: "+44 7501 119985",
+          email: "isaviatata@gmail.com",
+          address: { "@type": "PostalAddress", addressLocality: "London", addressCountry: "UK" },
+          alumniOf: ["Theodor Costescu Economical National College", "City Lit"],
+          knowsAbout: ["Administration", "Customer Service", "Microsoft Office", "Business Operations"],
         }),
       },
     ],
@@ -42,68 +42,63 @@ export const Route = createFileRoute("/")({
   component: Resume,
 });
 
-const PHONE = "+447442005955";
-const PHONE_DISPLAY = "+44 7442 005955";
-const EMAIL = "samir00524@gmail.com";
-const RESUME_PDF_PATH = "/Sam-Shahi-Resume.pdf";
-const RESUME_PDF_FILENAME = "Sam Shahi - 07442005955 - IBM MSc - 10+ Yrs Exp.pdf";
+const PHONE = "+447501119985";
+const PHONE_DISPLAY = "+44 7501 119985";
+const EMAIL = "isaviatata@gmail.com";
+const RESUME_PDF_PATH = "/Isabella-Stancu-CV.pdf";
+const RESUME_PDF_FILENAME = "CV_ISABELLA_STANCU.pdf";
 
-const competencies = [
-  "New Business Development",
-  "Life Sciences & Regulated Markets",
-  "Commercial Negotiation (CDA / MSA)",
-  "Cross-Functional Collaboration",
-  "Service & Solution Selling",
-  "Key Account Growth",
-  "Proposal Design & Presentation",
-  "CRM Pipeline Management",
-  "Stakeholder Engagement",
-  "Target Setting & Forecasting",
+const skills = [
+  "Customer Service & Client Interaction",
+  "Communication Skills",
+  "Organisation & Time Management",
+  "Teamwork & Collaboration",
+  "Problem Solving",
+  "Attention to Detail",
+  "Ability to Work Under Pressure",
+  "Microsoft Word, Excel, PowerPoint & Access",
 ];
 
 const experience = [
   {
-    role: "Senior Business Development Manager",
-    company: "Taylor-Marriott",
-    period: "2023 – 2026",
-    sub: "Digital product design, build & growth for life-sciences and regulated industries",
+    role: "Barista",
+    company: "Costa Coffee, Deptford",
+    period: "March 2025 – April 2026",
+    sub: "London, UK · Fast-paced retail customer service",
     points: [
-      "Own new-business growth for bespoke digital products, client portals, and marketing systems sold into life-sciences, analytical testing, pharmaceutical, and related regulated organisations.",
-      "Closed 30+ new digital-solution contracts over 24 months, with a 60%+ proposal-to-close win rate against annual targets agreed with leadership.",
-      "Grew key-account revenue 30%+ YoY by diagnosing client bottlenecks, scoping tailored platforms with engineering, and presenting commercial proposals to MD/VP stakeholders.",
-      "Manage CDAs, MSAs, and pricing negotiations through to signature; keep CRM forecasts current and partner with delivery to protect go-live quality and retention.",
-    ],
-  },
-  {
-    role: "Business Development Manager",
-    company: "Herbal Creations",
-    period: "2018 – 2021",
-    sub: "Manufacturer & global exporter of phytochemicals and herbal extracts (GMP / HACCP / ISO)",
-    points: [
-      "Drove B2B development for a manufacturer of 800+ herbal extracts and phytochemicals, selling into nutraceutical, pharmaceutical, and cosmetic formulators across EU and US supply chains.",
-      "Grew assigned export revenue 34% over three years and opened 22 new distributor and formulator accounts, leveraging USA and Europe warehouse capability for reliable fulfilment.",
-      "Won multi-SKU supply agreements by aligning customised extract specs, COAs, and regulatory documentation (GMP, HACCP, ISO, Halal, Kosher) to buyer quality and compliance needs.",
-      "Partnered with QC and production on rapid project quotes; negotiated commercial terms and monitored satisfaction to expand share of wallet with priority accounts.",
-    ],
-  },
-  {
-    role: "Sales Development Representative",
-    company: "Global Tech Users",
-    period: "2014 – 2018",
-    sub: "B2B contact databases, technographics & data enrichment services",
-    points: [
-      "Prospected and qualified buyers of targeted B2B datasets, installed-tech intelligence, and data-enrichment services across marketing, sales ops, and IT decision-makers in 135+ country markets.",
-      "Generated 180+ sales-accepted leads per quarter on average and contributed £920K+ in influenced pipeline annually through structured outreach and CRM-disciplined follow-up.",
-      "Exceeded SDR quota by 118% in the final two years by refining ICP targeting (C-level, healthcare, and international B2B segments) and improving meeting-to-opportunity conversion.",
-      "Handed off high-intent opportunities with clear discovery notes, enabling AEs to close data-subscription and enrichment deals faster and with fewer lost cycles.",
+      "Delivered high-quality customer service in a fast-paced environment",
+      "Handled customer queries and resolved issues professionally",
+      "Worked effectively as part of a team to ensure smooth daily operations",
+      "Managed multiple tasks efficiently during busy periods",
+      "Maintained high standards of organisation, cleanliness, and presentation",
+      "Followed company procedures and standards consistently",
     ],
   },
 ];
 
 const education = [
-  { degree: "MSc International Business Management", school: "De Montfort University, Leicester", period: "2021 – 2022" },
-  { degree: "BBM International Business Management", school: "India", period: "2014 – 2017" },
+  {
+    degree: "Business Administration Course",
+    school: "City Lit, London",
+    period: "June – July 2026",
+    detail: "Microsoft Word, Excel, PowerPoint & Access — document creation, data analysis, presentations, and database management",
+  },
+  {
+    degree: "Technician in Tourism",
+    school: "Theodor Costescu Economical National College, Drobeta Turnu-Severin, Romania",
+    period: "2020 – 2024",
+    detail: "Romanian Baccalaureate Diploma · Graduation average: 7.78 · English B1–B2 · Digital skills: Power user",
+  },
 ];
+
+const languages = [
+  { language: "English", level: "Advanced" },
+  { language: "Romanian", level: "Fluent" },
+  { language: "Italian", level: "Fluent" },
+  { language: "Spanish", level: "Beginner" },
+];
+
+const interests = ["Writing", "Reading", "Using computers and improving IT skills", "Organising and planning tasks"];
 
 function Resume() {
   return (
@@ -114,25 +109,27 @@ function Resume() {
             <TiltCard className="h-full p-8 md:p-10">
               <Label>Profile</Label>
               <h1 className="mt-3 text-4xl font-semibold tracking-tight text-ink md:text-5xl lg:text-6xl">
-                Sam Shahi
+                Isabella Stancu
               </h1>
               <p className="mt-3 text-lg font-medium text-primary md:text-xl">
-                Senior Business Development Manager
+                Administration &amp; Business Operations
               </p>
               <p className="mt-1 text-sm text-muted-foreground">
-                Life Sciences · Key Accounts · UK &amp; Ireland
+                Customer Service · Microsoft Office · London, UK
               </p>
               <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-foreground/80">
-                Results-driven BDM progressing from SDR to Senior BDM, with a track record selling digital
-                solutions into life-sciences and regulated industries, and earlier B2B growth for a
-                GMP-certified phytochemical and herbal-extract manufacturer.
+                Motivated and reliable individual with experience in fast-paced customer service
+                environments. Strong communication, organisation, and problem-solving skills developed
+                through hands-on work in a busy retail setting. Now seeking an admin role to build
+                formal office-based skills, gain professional experience in administration, and develop
+                a long-term career in business operations.
               </p>
               <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
-                <span className="inline-flex items-center gap-1.5"><MapPin className="h-4 w-4 text-primary" /> Cardiff, Wales</span>
+                <span className="inline-flex items-center gap-1.5"><MapPin className="h-4 w-4 text-primary" /> London, UK</span>
                 <span className="hidden h-1 w-1 rounded-full bg-border sm:inline-block" />
-                <span className="inline-flex items-center gap-1.5"><Laptop className="h-4 w-4 text-primary" /> Hybrid</span>
+                <span className="inline-flex items-center gap-1.5"><Laptop className="h-4 w-4 text-primary" /> Office-based roles</span>
                 <span className="hidden h-1 w-1 rounded-full bg-border sm:inline-block" />
-                <span className="inline-flex items-center gap-1.5"><Plane className="h-4 w-4 text-primary" /> Open to international travel</span>
+                <span className="inline-flex items-center gap-1.5"><BookOpen className="h-4 w-4 text-primary" /> City Lit certified</span>
               </div>
             </TiltCard>
           </Reveal>
@@ -151,12 +148,12 @@ function Resume() {
 
           <Reveal delay={140} className="md:col-span-6 lg:col-span-12">
             <TiltCard className="h-full p-7 md:p-8" intensity={1}>
-              <Label>Core Competencies</Label>
-              <h3 className="mt-2 text-xl font-semibold tracking-tight text-ink md:text-2xl">Where I bring value</h3>
+              <Label>Key Skills</Label>
+              <h3 className="mt-2 text-xl font-semibold tracking-tight text-ink md:text-2xl">What I bring</h3>
               <div className="mt-6 flex flex-wrap gap-2">
-                {competencies.map((c) => (
-                  <span key={c} className="rounded-full border border-border bg-secondary/60 px-3.5 py-1.5 text-[13px] font-medium text-foreground/80 transition hover:border-primary/40 hover:bg-accent hover:text-accent-foreground">
-                    {c}
+                {skills.map((s) => (
+                  <span key={s} className="rounded-full border border-border bg-secondary/60 px-3.5 py-1.5 text-[13px] font-medium text-foreground/80 transition hover:border-primary/40 hover:bg-accent hover:text-accent-foreground">
+                    {s}
                   </span>
                 ))}
               </div>
@@ -165,7 +162,7 @@ function Resume() {
 
           <Reveal delay={200} className="md:col-span-6 lg:col-span-12">
             <TiltCard className="h-full p-7 md:p-8" intensity={1}>
-              <Label>Education</Label>
+              <Label>Education &amp; Training</Label>
               <div className="mt-4 grid gap-5 md:grid-cols-2">
                 {education.map((e) => (
                   <div key={e.degree} className="flex items-start gap-3">
@@ -176,6 +173,7 @@ function Resume() {
                       <div className="text-xs font-medium uppercase tracking-wider text-muted-foreground">{e.period}</div>
                       <div className="mt-0.5 text-[15px] font-semibold text-ink">{e.degree}</div>
                       <div className="text-sm text-muted-foreground">{e.school}</div>
+                      {e.detail && <div className="mt-1 text-[13px] leading-relaxed text-foreground/70">{e.detail}</div>}
                     </div>
                   </div>
                 ))}
@@ -187,7 +185,7 @@ function Resume() {
             <Reveal
               key={job.company}
               delay={260 + i * 80}
-              className={i === 2 ? "md:col-span-6 lg:col-span-12" : "md:col-span-6 lg:col-span-6"}
+              className="md:col-span-6 lg:col-span-12"
             >
               <TiltCard className="h-full p-7 md:p-8" intensity={1}>
                 <div className="flex items-start justify-between gap-3">
@@ -211,6 +209,38 @@ function Resume() {
               </TiltCard>
             </Reveal>
           ))}
+
+          <Reveal delay={340} className="md:col-span-6 lg:col-span-6">
+            <TiltCard className="h-full p-7 md:p-8" intensity={1}>
+              <Label>Languages</Label>
+              <div className="mt-4 space-y-3">
+                {languages.map((l) => (
+                  <div key={l.language} className="flex items-center gap-3">
+                    <div className="shrink-0 rounded-xl border border-border bg-secondary p-2.5 text-primary">
+                      <Languages className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <div className="text-[15px] font-semibold text-ink">{l.language}</div>
+                      <div className="text-sm text-muted-foreground">{l.level}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </TiltCard>
+          </Reveal>
+
+          <Reveal delay={400} className="md:col-span-6 lg:col-span-6">
+            <TiltCard className="h-full p-7 md:p-8" intensity={1}>
+              <Label>Interests</Label>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {interests.map((interest) => (
+                  <span key={interest} className="rounded-full border border-border bg-secondary/60 px-3.5 py-1.5 text-[13px] font-medium text-foreground/80">
+                    {interest}
+                  </span>
+                ))}
+              </div>
+            </TiltCard>
+          </Reveal>
 
           <ContactForm />
         </div>
@@ -243,7 +273,6 @@ function ContactButton({
 
   const openHref = (event: React.MouseEvent<HTMLAnchorElement>) => {
     if (!isNativeProtocol) return;
-    // Ensure mailto/tel open the system client even if a parent handler interferes
     event.preventDefault();
     window.location.href = href;
   };
@@ -300,7 +329,7 @@ function DownloadPdfButton({ href, filename }: { href: string; filename: string 
         <Download className="h-5 w-5" />
       </div>
       <div className="min-w-0 flex-1">
-        <div className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Resume</div>
+        <div className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">CV</div>
         <div className="mt-0.5 text-sm font-medium text-ink">Download PDF</div>
       </div>
       <ArrowUpRight className="h-4 w-4 shrink-0 text-primary opacity-0 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
