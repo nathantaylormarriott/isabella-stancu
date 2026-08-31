@@ -12,6 +12,7 @@ import { type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { buildRootMetaTags, WEBSITE_JSON_LD } from "@/lib/siteMeta";
+import { getRequestOrigin } from "@/lib/origin.functions";
 
 function NotFoundComponent() {
   return (
@@ -71,8 +72,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: buildRootMetaTags(),
+  loader: async () => ({ origin: await getRequestOrigin() }),
+  head: ({ loaderData }) => ({
+    meta: buildRootMetaTags(loaderData?.origin),
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },

@@ -1,5 +1,5 @@
 import { PROFILE } from "@/lib/profile";
-import { SITE_OG_IMAGE_PATH, buildPageMetaTags } from "@/lib/siteMeta";
+import { SITE_OG_IMAGE_PATH, absoluteAsset, absolutePageUrl, buildPageMetaTags } from "@/lib/siteMeta";
 
 export const SHARE_PAGE_DESCRIPTION =
   `${PROFILE.name} — quick links to CV, contact, and admin profile. ${PROFILE.tagline}.`;
@@ -12,19 +12,18 @@ export const SHARE_PAGE_META = {
 } as const;
 
 export function buildSharePageMetaTags(origin?: string) {
-  const ogImage = origin ? `${origin}${SITE_OG_IMAGE_PATH}` : SITE_OG_IMAGE_PATH;
-
   return {
     meta: buildPageMetaTags({
       path: SHARE_PAGE_META.ogUrl,
+      origin,
       title: SHARE_PAGE_META.title,
       description: SHARE_PAGE_META.description,
       ogTitle: SHARE_PAGE_META.ogTitle,
       ogDescription: SHARE_PAGE_META.description,
       ogType: "website",
-      ogImage,
+      ogImage: absoluteAsset(origin, SITE_OG_IMAGE_PATH),
       twitterCard: "summary_large_image",
     }),
-    links: [{ rel: "canonical", href: SHARE_PAGE_META.ogUrl }],
+    links: [{ rel: "canonical", href: absolutePageUrl(origin, SHARE_PAGE_META.ogUrl) }],
   };
 }

@@ -1,9 +1,11 @@
 import { EMAIL, PHONE, PHONE_DISPLAY, PROFILE, RESUME_PDF_PATH } from "@/lib/profile";
 
-export const SITE_OG_IMAGE_PATH = "/og-image.png";
+export const SITE_OG_IMAGE_VERSION = "2";
+export const SITE_OG_IMAGE_PATH = `/og-image.png?v=${SITE_OG_IMAGE_VERSION}`;
 export const SITE_OG_IMAGE_WIDTH = "1200";
 export const SITE_OG_IMAGE_HEIGHT = "630";
 export const SITE_THEME_COLOR = "#C96B4A";
+export const SITE_CANONICAL_ORIGIN = "https://isabella-stancu.netlify.app";
 
 export const SITE_OG_IMAGE_ALT = `${PROFILE.name} — ${PROFILE.title} — ${PHONE_DISPLAY}`;
 
@@ -107,7 +109,20 @@ export const WEBSITE_JSON_LD = {
 
 type MetaTag = Record<string, string>;
 
-export function buildRootMetaTags(): MetaTag[] {
+export function absoluteAsset(origin: string | undefined, path: string): string {
+  const base = origin ?? SITE_CANONICAL_ORIGIN;
+  return `${base.replace(/\/$/, "")}${path.startsWith("/") ? path : `/${path}`}`;
+}
+
+export function absolutePageUrl(origin: string | undefined, path: string): string {
+  const base = origin ?? SITE_CANONICAL_ORIGIN;
+  return `${base.replace(/\/$/, "")}${path.startsWith("/") ? path : `/${path}`}`;
+}
+
+export function buildRootMetaTags(origin?: string): MetaTag[] {
+  const ogImage = absoluteAsset(origin, SITE_OG_IMAGE_PATH);
+  const pageUrl = absolutePageUrl(origin, "/");
+
   return [
     { charSet: "utf-8" },
     { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -118,31 +133,35 @@ export function buildRootMetaTags(): MetaTag[] {
     { name: "theme-color", content: SITE_THEME_COLOR },
     { property: "og:site_name", content: SITE_OG_SITE_NAME },
     { property: "og:type", content: "website" },
+    { property: "og:url", content: pageUrl },
     { property: "og:title", content: SITE_OG_TITLE },
     { property: "og:description", content: SITE_OG_DESCRIPTION },
-    { property: "og:image", content: SITE_OG_IMAGE_PATH },
+    { property: "og:image", content: ogImage },
+    { property: "og:image:secure_url", content: ogImage },
     { property: "og:image:width", content: SITE_OG_IMAGE_WIDTH },
     { property: "og:image:height", content: SITE_OG_IMAGE_HEIGHT },
     { property: "og:image:alt", content: SITE_OG_IMAGE_ALT },
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:title", content: SITE_OG_TITLE },
     { name: "twitter:description", content: SITE_OG_DESCRIPTION },
-    { name: "twitter:image", content: SITE_OG_IMAGE_PATH },
+    { name: "twitter:image", content: ogImage },
     { name: "twitter:image:alt", content: SITE_OG_IMAGE_ALT },
   ];
 }
 
 export function buildPageMetaTags({
   path,
+  origin,
   title = SITE_TITLE,
   description = SITE_DESCRIPTION,
   ogTitle = SITE_OG_TITLE,
   ogDescription = SITE_OG_DESCRIPTION,
   ogType = "website",
-  ogImage = SITE_OG_IMAGE_PATH,
+  ogImage,
   twitterCard = "summary_large_image",
 }: {
   path: string;
+  origin?: string;
   title?: string;
   description?: string;
   ogTitle?: string;
@@ -151,6 +170,9 @@ export function buildPageMetaTags({
   ogImage?: string;
   twitterCard?: "summary" | "summary_large_image";
 }): MetaTag[] {
+  const resolvedOgImage = ogImage ?? absoluteAsset(origin, SITE_OG_IMAGE_PATH);
+  const pageUrl = path.startsWith("http") ? path : absolutePageUrl(origin, path);
+
   return [
     { title },
     { name: "description", content: description },
@@ -158,15 +180,16 @@ export function buildPageMetaTags({
     { property: "og:title", content: ogTitle },
     { property: "og:description", content: ogDescription },
     { property: "og:type", content: ogType },
-    { property: "og:url", content: path },
-    { property: "og:image", content: ogImage },
+    { property: "og:url", content: pageUrl },
+    { property: "og:image", content: resolvedOgImage },
+    { property: "og:image:secure_url", content: resolvedOgImage },
     { property: "og:image:width", content: SITE_OG_IMAGE_WIDTH },
     { property: "og:image:height", content: SITE_OG_IMAGE_HEIGHT },
     { property: "og:image:alt", content: SITE_OG_IMAGE_ALT },
     { name: "twitter:card", content: twitterCard },
     { name: "twitter:title", content: ogTitle },
     { name: "twitter:description", content: ogDescription },
-    { name: "twitter:image", content: ogImage },
+    { name: "twitter:image", content: resolvedOgImage },
     { name: "twitter:image:alt", content: SITE_OG_IMAGE_ALT },
   ];
 }

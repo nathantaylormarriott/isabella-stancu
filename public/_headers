@@ -1,0 +1,11 @@
+/og-image.png
+  Cache-Control: public, max-age=0, must-revalidate
+
+/favicon.svg
+  Cache-Control: public, max-age=0, must-revalidate
+
+/apple-touch-icon.png
+  Cache-Control: public, max-age=0, must-revalidate
+
+/favicon-32x32.png
+  Cache-Control: public, max-age=0, must-revalidate

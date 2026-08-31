@@ -5,12 +5,18 @@ import { Reveal } from "@/components/Reveal";
 import { ContactForm } from "@/components/ContactForm";
 import { ShinyLink } from "@/components/ui/shiny-button";
 import { EMAIL, PHONE, PHONE_DISPLAY, PROFILE, RESUME_PDF_FILENAME, RESUME_PDF_PATH } from "@/lib/profile";
-import { buildPageMetaTags, PERSON_JSON_LD } from "@/lib/siteMeta";
+import { absolutePageUrl, buildPageMetaTags, PERSON_JSON_LD } from "@/lib/siteMeta";
+import { getRequestOrigin } from "@/lib/origin.functions";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: buildPageMetaTags({ path: "/", ogType: "profile" }),
-    links: [{ rel: "canonical", href: "/" }],
+  loader: async () => ({ origin: await getRequestOrigin() }),
+  head: ({ loaderData }) => ({
+    meta: buildPageMetaTags({
+      path: "/",
+      origin: loaderData?.origin,
+      ogType: "profile",
+    }),
+    links: [{ rel: "canonical", href: absolutePageUrl(loaderData?.origin, "/") }],
     scripts: [
       {
         type: "application/ld+json",
