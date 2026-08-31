@@ -5,38 +5,16 @@ import { Reveal } from "@/components/Reveal";
 import { ContactForm } from "@/components/ContactForm";
 import { ShinyLink } from "@/components/ui/shiny-button";
 import { EMAIL, PHONE, PHONE_DISPLAY, PROFILE, RESUME_PDF_FILENAME, RESUME_PDF_PATH } from "@/lib/profile";
+import { buildPageMetaTags, PERSON_JSON_LD } from "@/lib/siteMeta";
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    meta: [
-      { title: "Isabella Stancu — Admin & Business Operations | London, UK" },
-      { name: "description", content: "Isabella Stancu — Motivated admin professional based in London. Experienced in customer service, Microsoft Office, and business administration. Seeking office-based admin roles." },
-      { name: "keywords", content: "Isabella Stancu, Administration, Business Operations, London, UK, Customer Service, Microsoft Office, City Lit" },
-      { property: "og:title", content: "Isabella Stancu — Admin & Business Operations" },
-      { property: "og:description", content: "Admin professional · Customer Service · Microsoft Office · London, UK." },
-      { property: "og:type", content: "profile" },
-      { property: "og:url", content: "/" },
-      { property: "og:image", content: "/og-image.png" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: "/og-image.png" },
-      { name: "twitter:title", content: "Isabella Stancu — Admin & Business Operations" },
-      { name: "twitter:description", content: "Admin professional · Customer Service · Microsoft Office · London, UK." },
-    ],
+    meta: buildPageMetaTags({ path: "/", ogType: "profile" }),
     links: [{ rel: "canonical", href: "/" }],
     scripts: [
       {
         type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Person",
-          name: PROFILE.name,
-          jobTitle: "Administration Professional",
-          telephone: PHONE_DISPLAY,
-          email: EMAIL,
-          address: { "@type": "PostalAddress", addressLocality: "London", addressCountry: "UK" },
-          alumniOf: ["Theodor Costescu Economical National College", "City Lit"],
-          knowsAbout: ["Administration", "Customer Service", "Microsoft Office", "Business Operations"],
-        }),
+        children: JSON.stringify(PERSON_JSON_LD),
       },
     ],
   }),

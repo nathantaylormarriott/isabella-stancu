@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { getRequestOrigin } from "@/lib/origin.functions";
 import { EMAIL, PHONE, PHONE_DISPLAY, PROFILE, RESUME_PDF_FILENAME, RESUME_PDF_PATH } from "@/lib/profile";
-import { SHARE_PAGE_META } from "@/lib/sharePageMeta";
+import { buildSharePageMetaTags } from "@/lib/sharePageMeta";
 import { cn } from "@/lib/utils";
 
 const FORM_NAME = "contact";
@@ -263,25 +263,7 @@ function ShareContactForm() {
 
 export const Route = createFileRoute("/share")({
   loader: async () => ({ origin: await getRequestOrigin() }),
-  head: ({ loaderData }) => {
-    const ogImage = `${loaderData?.origin ?? ""}/favicon.svg`;
-    return {
-      meta: [
-        { title: SHARE_PAGE_META.title },
-        { name: "description", content: SHARE_PAGE_META.description },
-        { property: "og:title", content: SHARE_PAGE_META.ogTitle },
-        { property: "og:description", content: SHARE_PAGE_META.description },
-        { property: "og:type", content: "website" },
-        { property: "og:url", content: SHARE_PAGE_META.ogUrl },
-        { property: "og:image", content: ogImage },
-        { name: "twitter:card", content: "summary" },
-        { name: "twitter:title", content: SHARE_PAGE_META.ogTitle },
-        { name: "twitter:description", content: SHARE_PAGE_META.description },
-        { name: "twitter:image", content: ogImage },
-      ],
-      links: [{ rel: "canonical", href: "/share" }],
-    };
-  },
+  head: ({ loaderData }) => buildSharePageMetaTags(loaderData?.origin),
   component: SharePage,
 });
 

@@ -11,6 +11,7 @@ import { type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { buildRootMetaTags, WEBSITE_JSON_LD } from "@/lib/siteMeta";
 
 function NotFoundComponent() {
   return (
@@ -71,23 +72,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Isabella Stancu — Admin & Business Operations | London, UK" },
-      { name: "description", content: "Isabella Stancu — Motivated admin professional based in London. Experienced in customer service, Microsoft Office, and business administration." },
-      { name: "author", content: "Isabella Stancu" },
-      { name: "theme-color", content: "#C96B4A" },
-      { property: "og:site_name", content: "Isabella Stancu" },
-      { property: "og:type", content: "website" },
-      { property: "og:image", content: "/og-image.png" },
-      { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "Isabella Stancu — Admin & Business Operations — +44 7501 119985" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: "/og-image.png" },
-      { name: "twitter:image:alt", content: "Isabella Stancu — Admin & Business Operations — +44 7501 119985" },
-    ],
+    meta: buildRootMetaTags(),
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
@@ -96,6 +81,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(WEBSITE_JSON_LD),
+      },
     ],
   }),
   shellComponent: RootShell,
